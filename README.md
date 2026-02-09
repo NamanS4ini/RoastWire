@@ -1,6 +1,6 @@
-# RoastWire
+# Void
 
-A modern real-time communication platform built for communities and teams. RoastWire provides seamless messaging experiences with support for group rooms, private conversations, and comprehensive administrative tools.
+A modern real-time communication platform built for communities and teams. Void provides seamless messaging experiences with support for group rooms, private conversations, and comprehensive administrative tools.
 
 ## Features
 
@@ -32,8 +32,8 @@ A modern real-time communication platform built for communities and teams. Roast
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/namans4ini/RoastWire.git
-cd roastwire
+git clone https://github.com/namans4ini/Void.git
+cd Void
 ```
 
 ### 2. Install dependencies
@@ -47,7 +47,7 @@ npm install
 Create a `.env` file in the root directory:
 
 ```env
-DATABASE_URL="mysql://user:password@localhost:3306/roastwire"
+DATABASE_URL="mysql://user:password@localhost:3306/Void"
 NEXTAUTH_SECRET="your-secret-key"
 NEXTAUTH_URL="http://localhost:3000"
 ```
@@ -70,7 +70,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 ## Project Structure
 
 ```
-roastwire/
+Void/
 ├── app/                  # Next.js App Router
 ├── components/           # Reusable UI components
 ├── lib/                  # Utility functions and configurations
