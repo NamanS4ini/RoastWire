@@ -1,4 +1,7 @@
-# Void
+<div align="center">
+  <img src="public/icons/android-chrome-512x512.png" alt="Void Logo" width="120" />
+  <h1>Void</h1>
+</div>
 
 A modern real-time communication platform built for communities and teams. Void provides seamless messaging experiences with support for group rooms, private conversations, and comprehensive administrative tools.
 
