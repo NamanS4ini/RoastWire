@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
 import { ClerkProvider } from '@clerk/nextjs'
-import { dark, shadcn } from '@clerk/themes'
+import { shadcn } from '@clerk/themes'
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers/theme-provider"
+import { cn } from "@/lib/utils";
 
 const openSans = Open_Sans({
   variable: "--font-open-sans",
@@ -22,11 +23,11 @@ export default function RootLayout({
   return (
     <ClerkProvider
       appearance={{
-        theme: dark,
+        theme: shadcn,
       }}>
       <html lang="en" suppressHydrationWarning>
         <body
-          className={`${openSans.variable} antialiased`}
+          className={cn(openSans.variable, "bg-white dark:bg-[#2b2d31]")}
         >
           <ThemeProvider
             attribute="class"
