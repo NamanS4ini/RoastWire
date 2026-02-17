@@ -2,6 +2,8 @@ import { db } from '@/lib/db'
 import { getProfile } from '@/lib/profile'
 import { redirect } from 'next/navigation'
 import { UserButton, SignOutButton } from '@clerk/nextjs'
+import { InitialModal } from '@/components/modals/InitialModal'
+import { ModeToggle } from '@/components/ui/themeButton'
 
 const SetupPage = async () => {
   const profile = await getProfile()
@@ -21,11 +23,7 @@ const SetupPage = async () => {
 
   return (
     <>
-    <div>Create a Server</div>
-    <div>
-      <UserButton />
-      <SignOutButton />
-    </div>
+      <InitialModal />
     </>
   )
 }

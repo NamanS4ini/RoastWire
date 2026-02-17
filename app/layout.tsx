@@ -5,6 +5,7 @@ import { shadcn } from '@clerk/themes'
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers/theme-provider"
 import { cn } from "@/lib/utils";
+import { ModeToggle } from "@/components/ui/themeButton";
 
 const openSans = Open_Sans({
   variable: "--font-open-sans",
@@ -35,6 +36,10 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
+
+                  <div className='z-9999999'>
+                  <ModeToggle />
+                  </div>
             {children}
           </ThemeProvider>
         </body>
