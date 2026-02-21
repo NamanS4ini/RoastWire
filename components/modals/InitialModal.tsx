@@ -1,7 +1,11 @@
 "use client"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { useEffect, useState } from "react"
+import FileUpload from "../fileUpload"
 import * as z from "zod"
+
+import { Input } from "../ui/input"
 import { Button } from "../ui/button"
 import {
     Dialog,
@@ -19,8 +23,6 @@ import {
     FormItem,
     FormLabel
 } from "../ui/form"
-import { Input } from "../ui/input"
-import { useEffect, useState } from "react"
 
 
 const formSchema = z.object({
@@ -55,7 +57,7 @@ export const InitialModal = () => {
     return (
         <div>
             <Dialog open>
-                <DialogContent className="sm:max-w-[425px]">
+                <DialogContent className="sm:max-w-106.25">
                     <DialogHeader>
                         <DialogTitle>Initial Setup</DialogTitle>
                         <DialogDescription>
@@ -82,10 +84,10 @@ export const InitialModal = () => {
                                 name="imageURL"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Server Image URL or upload (TODO)</FormLabel>
+                                        <FormLabel>Server Image</FormLabel>
                                         <FormControl>
-                                            <Input disabled={isLoading} placeholder="https://example.com/image.png" {...field} />
-                                        </FormControl> 
+                                            <FileUpload />
+                                        </FormControl>
                                         <FormMessage />
                                     </FormItem>
                                 )}
