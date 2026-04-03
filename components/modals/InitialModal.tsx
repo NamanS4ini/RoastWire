@@ -1,6 +1,7 @@
 "use client"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
+import axios from "axios"
 import { useEffect, useState } from "react"
 import FileUpload from "../fileUpload"
 import * as z from "zod"
@@ -23,6 +24,8 @@ import {
     FormItem,
     FormLabel
 } from "../ui/form"
+import { toast } from "sonner"
+import { useRouter } from "next/navigation"
 
 
 const formSchema = z.object({
@@ -32,6 +35,7 @@ const formSchema = z.object({
 
 export const InitialModal = () => {
     const [mounted, setMounted] = useState(false)
+    const router = useRouter()
     useEffect(() => {
       setMounted(true)
     
@@ -47,7 +51,16 @@ export const InitialModal = () => {
     
     const isLoading = form.formState.isSubmitting
     const onSubmit = async (data: z.infer<typeof formSchema>) => {
-        console.log(data)
+        try {
+            await axios.post("/api/servers", data)
+            toast.success("Server created successfully!")
+            form.reset()
+            router.refresh()
+            window.location.reload()
+
+        } catch (error) {
+            toast.error("Something went wrong. Please try again.")
+        }
     }
     
     if (!mounted) {

@@ -31,7 +31,6 @@ const FileUpload = ({ endpoint, value, onChange }: FileUploadProps) => {
                 endpoint={endpoint}
                 onClientUploadComplete={(res) => {
                     if (onChange) {
-                        console.log(res?.[0].ufsUrl);
                         onChange(res?.[0].ufsUrl || "");
                     }
                 }}
