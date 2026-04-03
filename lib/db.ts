@@ -14,7 +14,6 @@ const adapter = new PrismaMariaDb({
   connectionLimit: 5,
   connectTimeout: 30000,
 });
-
 export const db = globalForPrisma.prisma ?? new PrismaClient({ adapter });
 
 if (process.env.NODE_ENV !== "production") {
