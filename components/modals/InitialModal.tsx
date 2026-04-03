@@ -68,19 +68,6 @@ export const InitialModal = () => {
                         <form onSubmit={form.handleSubmit(onSubmit)} className="grid w-full gap-4 py-4">
                             <FormField
                                 control={form.control}
-                                name="name"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Server Name</FormLabel>
-                                        <FormControl>
-                                            <Input disabled={isLoading} placeholder="My Cool Server" {...field} />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-                            <FormField
-                                control={form.control}
                                 name="imageURL"
                                 render={({ field }) => (
                                     <FormItem>
@@ -96,6 +83,20 @@ export const InitialModal = () => {
                                     </FormItem>
                                 )}
                             />
+                            <FormField
+                                control={form.control}
+                                name="name"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Server Name</FormLabel>
+                                        <FormControl>
+                                            <Input disabled={isLoading} placeholder="My Cool Server" {...field} />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            
                     <DialogFooter>
                         <Button type="submit" disabled={isLoading}>Create Server</Button>
                     </DialogFooter>
