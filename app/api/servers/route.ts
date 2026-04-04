@@ -20,21 +20,21 @@ export async function POST(request: Request) {
     const newServer = await db.server.create({
       data: {
         name: name.trim(),
-        imageURL: imageURL || null,
+        imageURL,
         inviteCode: uuidv4(),
-        profileId: profile.userId,
+        profileId: profile.id,
         Channels: {
           create: [
             {
               name: "general",
-              profileId: profile.userId,
+              profileId: profile.id,
             },
           ],
         },
         Members: {
           create: [
             {
-              profileId: profile.userId,
+              profileId: profile.id,
               role: MemberRole.OWNER,
             },
           ],
