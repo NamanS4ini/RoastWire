@@ -2,7 +2,7 @@ import React from 'react'
 
 const NavigationSidebar = () => {
   return (
-    <div>NavigationSidebar</div>
+    <div></div>
   )
 }
 
