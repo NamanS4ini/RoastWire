@@ -23,6 +23,7 @@ A modern real-time communication platform built for communities and teams. Void 
 - Prisma
 - MySQL
 - Tailwind CSS
+- TypeScript
 
 ## Prerequisites
 
