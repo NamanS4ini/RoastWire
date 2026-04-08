@@ -3,9 +3,8 @@ import { Open_Sans } from "next/font/google";
 import { ClerkProvider } from '@clerk/nextjs'
 import { shadcn } from '@clerk/themes'
 import "./globals.css";
-import { ThemeProvider } from "@/components/providers/theme-provider"
+import { ThemeProvider } from "@/components/providers/ThemeProvider"
 import { cn } from "@/lib/utils";
-import { ModeToggle } from "@/components/ui/themeButton";
 import { Toaster } from "@/components/ui/sonner";
 
 const openSans = Open_Sans({
@@ -33,16 +32,12 @@ export default function RootLayout({
         >
           <ThemeProvider
             attribute="class"
-            defaultTheme="light"
+            defaultTheme="dark"
             enableSystem
             disableTransitionOnChange
           >
-
-                  <div className='z-9999999'>
-                  <ModeToggle />
-                  </div>
-            {children}
-            <Toaster position="top-right" richColors/>
+              {children}
+              <Toaster position="top-right" richColors />
           </ThemeProvider>
         </body>
       </html>

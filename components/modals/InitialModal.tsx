@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import axios from "axios"
 import { useEffect, useState } from "react"
-import FileUpload from "../fileUpload"
+import FileUpload from "../FileUpload"
 import * as z from "zod"
 
 import { Input } from "../ui/input"
