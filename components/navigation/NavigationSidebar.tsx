@@ -5,6 +5,8 @@ import NavigationAction from './NavigationAction';
 import { Separator } from '../ui/separator';
 import { ScrollArea } from '../ui/scroll-area';
 import NavigationItem from './NavigationItem';
+import { ModeToggle } from '../ui/themeButton';
+import { UserButton } from '@clerk/nextjs';
 
 const NavigationSidebar = async () => {
   const profile = await currentProfile();
@@ -33,6 +35,16 @@ const NavigationSidebar = async () => {
           ))
         }
       </ScrollArea>
+      <div className='pb-3 mt-auto  flex items-center flex-col gap-y-4'>
+        <ModeToggle />
+        <UserButton afterSwitchSessionUrl='/'
+          appearance={{
+              elements: {
+                avatarBox: "h-[48px] w-[48px]"
+              }
+            }}
+        />
+      </div>
 
     </div>
   )
