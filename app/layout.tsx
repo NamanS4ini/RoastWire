@@ -6,6 +6,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/providers/ThemeProvider"
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/sonner";
+import ModalProvider from "@/components/providers/ModalProvider";
 
 const openSans = Open_Sans({
   variable: "--font-open-sans",
@@ -36,6 +37,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
+            <ModalProvider />
               {children}
               <Toaster position="top-right" richColors />
           </ThemeProvider>
