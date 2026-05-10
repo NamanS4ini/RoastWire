@@ -29,7 +29,7 @@ const NavigationSidebar = async () => {
       <ScrollArea className='w-full flex-1'>
         {
           server.map((server) => (
-            <div key={server.id} className='w-full h-12 rounded-md flex items-center justify-center text-sm font-medium cursor-pointer hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors'>
+            <div key={server.id} className='w-full h-12 rounded-md flex items-center justify-center text-sm font-medium mt-5 cursor-pointer hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors'>
               <NavigationItem id={server.id} name={server.name} imageURL={server.imageURL} />
             </div>
           ))
