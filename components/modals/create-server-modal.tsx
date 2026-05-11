@@ -58,6 +58,7 @@ export const CreateServerModal = () => {
             toast.success("Server created successfully!")
             form.reset()
             router.refresh()
+            onClose()
 
         } catch (error) {
             toast.error("Something went wrong. Please try again.")
