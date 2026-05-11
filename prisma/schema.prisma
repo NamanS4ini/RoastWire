@@ -48,13 +48,13 @@ model Server {
 enum MemberRole {
   OWNER
   MEMBER
-  GUEST
   MODERATOR
+  ADMIN
 }
 
 model Member {
   id        String   @id @default(uuid())
-  role      MemberRole @default(GUEST)
+  role      MemberRole @default(MEMBER)
   profileId String
   serverId  String
   profile   Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
