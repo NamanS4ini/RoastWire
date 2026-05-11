@@ -1,3 +1,4 @@
+import ServerSidebar from '@/components/server/ServerSidebar'
 import { currentProfile } from '@/lib/current-user'
 import { db } from '@/lib/db'
 import { RedirectToSignIn } from '@clerk/nextjs'
@@ -25,7 +26,14 @@ if (!profile) {
     }
 
   return (
-      <div>{children}</div>
+      <div className="h-full">
+          <div className='hidden md:flex h-full w-60 z-20 flex-col inset-y-0 fixed'>
+              <ServerSidebar serverId={id} />
+          </div>
+          <main className='h-full md:pl-60'>
+          {children}
+          </main>
+      </div>
   )
 }
 
