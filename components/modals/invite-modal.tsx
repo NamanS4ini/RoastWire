@@ -12,9 +12,10 @@ import { Button } from "../ui/button"
 import { Copy, CopyCheck, RefreshCcw } from "lucide-react"
 import { useOrigin } from "@/hooks/use-origin"
 import { useState } from "react"
+import axios from "axios"
 
 export const InviteModal = () => {
-    const { isOpen, onClose, type, data } = useModalStore()
+    const {onOpen, isOpen, onClose, type, data } = useModalStore()
     const origin = useOrigin()
     const isModalOpen = isOpen && type === "invite"
     const { server } = data
@@ -28,6 +29,17 @@ export const InviteModal = () => {
         setTimeout(() => setCopied(false), 2000)
     }
 
+    const onNew = async () => {
+        setIsLoading(true)
+        try {
+            const res = await axios.patch(`/api/servers/${server?.id}/invite`)
+            onOpen("invite", {server: res.data})
+        } catch (error) {
+            console.log(error)
+        } finally {
+            setIsLoading(false)
+        }
+    }
     return (
         <div>
             <Dialog open={isModalOpen} onOpenChange={onClose}>
@@ -53,9 +65,17 @@ export const InviteModal = () => {
                                 )}
                             </Button>
                         </div>
-                        <Button variant="secondary" size={"sm"} className="w-full cursor-pointer mt-4">
-                            Generate New Link
-                            <RefreshCcw className="ml-2 h-4 w-4" />
+                        <Button variant="secondary" size={"sm"} className="w-full cursor-pointer mt-4" onClick={onNew} disabled={isLoading}>
+                            {isLoading ? (
+                                <>
+                                    <RefreshCcw className="ml-2 h-4 w-4 animate-spin" />
+                                </>
+                            ) : (
+                                <>
+                                    Generate New Link
+                                    <RefreshCcw className="ml-2 h-4 w-4" />
+                                </>
+                            )}
                         </Button>
                     </div>
                 </DialogContent>
