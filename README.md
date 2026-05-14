@@ -3,21 +3,26 @@
   <h1>Void</h1>
 </div>
 
-A modern community and team collaboration platform. Void provides a structured approach to organizing communities through servers, channels, and role-based member management with secure authentication and customizable themes.
+A modern community and team collaboration platform. Void provides a structured approach to organizing communities through servers, channels, role-aware server controls, secure authentication, onboarding flows, and customizable themes.
 
 ## 🎯 Current Features
 
 ### Core Functionality
 - **Authentication** - Secure authentication via Clerk with sign-in and sign-up flows
-- **Servers** - Create and manage community servers with invite codes
-- **Channels** - Support for TEXT, AUDIO, and VIDEO channel types within servers
-- **Role-based Access Control** - Member roles (OWNER, MEMBER, GUEST, MODERATOR) with granular permissions
-- **User Profiles** - Profile management linked to Clerk authentication
+- **Onboarding** - First-time users are prompted to create their initial server and are redirected into their workspace after setup
+- **Servers** - Create and manage community servers with invite codes, server avatars, and automatic general-channel provisioning
+- **Invites** - Copyable invite links with invite-code regeneration from the server header
+- **Channels** - Support for TEXT, AUDIO, and VIDEO channel types within servers, grouped in the server sidebar
+- **Role-based Access Control** - Member roles (OWNER, MEMBER, MODERATOR, ADMIN) drive the server header actions and membership access
+- **User Profiles** - Profile management linked to Clerk authentication and synced with server membership data
 
 ### UI & UX
 - **Dark/Light Theme** - Theme toggle with persistent preferences via next-themes
 - **Responsive Navigation** - Sidebar navigation with server list and action items
 - **File Upload** - Image upload integration via UploadThing
+- **Media Attachments** - UploadThing is wired for both server images and message file uploads, including images, videos, and PDFs
+- **Server Layouts** - Protected server layouts render a dedicated sidebar, server header, and member-aware navigation for each server
+- **Modal-driven Flows** - Create-server and invite dialogs are managed globally through the modal store
 - **Modern Design System** - Radix UI components with Tailwind CSS styling
 - **Toast Notifications** - User feedback via Sonner toast system
 
@@ -107,15 +112,16 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 app/                     # Next.js 16 App Router
 ├── (auth)/              # Authentication routes (sign-in, sign-up)
 ├── (main)/              # Main application routes
-│   └── (routes)/servers/[id]/   # Server detail page
-├── (setup)/             # Setup/onboarding flow
-├── api/                 # API routes (servers, uploadthing)
+│   └── (routes)/servers/[id]/   # Protected server layout and server page
+├── (setup)/             # Setup/onboarding flow for first-time users
+├── api/                 # API routes (servers, invite refresh, uploadthing)
 └── layout.tsx           # Root layout with theme provider
 
 components/              # Reusable UI components
 ├── modals/              # Modal components
-├── navigation/          # Navigation sidebar and items
-├── providers/           # Context providers (Theme)
+├── navigation/          # Navigation sidebar, server list, and create-server action
+├── providers/           # Context providers (Theme, modals)
+├── server/              # Server sidebar and header controls
 ├── ui/                  # Shadcn UI components
 └── ActionTooltips.tsx, FileUpload.tsx
 
@@ -152,8 +158,10 @@ components.json          # Shadcn UI configuration
 1. User visits `/` (public page)
 2. Redirected to `/sign-in` or `/sign-up` (Clerk-managed)
 3. Upon successful auth, user profile is created/synced
-4. Redirected to `/setup` for initial server setup
-5. User can then access `/servers/[id]` to view server details
+4. Redirected to `/setup` for initial server setup if no server membership exists
+5. Existing members are redirected directly into `/servers/[id]`
+6. Server creation automatically creates the owner membership and a default `general` text channel
+7. Server invite links can be copied or regenerated from the server header
 
 ## 🚧 Roadmap / In Progress
 
