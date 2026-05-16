@@ -9,7 +9,7 @@ import { useModalStore } from "@/hooks/use-modal-store"
 import { Label } from "../ui/label"
 import { Input } from "../ui/input"
 import { Button } from "../ui/button"
-import { Copy, CopyCheck, RefreshCcw } from "lucide-react"
+import { Copy, Check, RefreshCcw } from "lucide-react"
 import { useOrigin } from "@/hooks/use-origin"
 import { useState } from "react"
 import axios from "axios"
@@ -59,7 +59,7 @@ export const InviteModal = () => {
                             />
                             <Button onClick={handleCopy} size="icon" className="cursor-pointer" variant={"outline"}>
                                 {copied ? (
-                                    <CopyCheck className="h-4 w-4" />
+                                    <Check className="h-4 w-4" />
                                 ) : (
                                     <Copy className="h-4 w-4" />
                                 )}
