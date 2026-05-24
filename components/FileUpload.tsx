@@ -36,9 +36,9 @@ const FileUpload = ({ endpoint, value, onChange }: FileUploadProps) => {
                 }}
                 onUploadError={(error: Error) => {
                     if (error.message ===  "Invalid config: FileSizeMismatch") {
-                        toast.error("File size should be less than 4MB");
+                        toast.error("File size should be less than 4MB.");
                     } else if (error.message === "Invalid config: FileTypeNotAllowed") {
-                        toast.error("File type not allowed. Please upload an image");
+                        toast.error("File type not allowed. Please upload an image.");
                     } else {
                         toast.error("Upload failed. Please try again.");
                     }
