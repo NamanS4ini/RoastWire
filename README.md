@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="public/icons/android-chrome-512x512.png" alt="Void Logo" width="120" />
+  <img src="public/icons/android-chrome-512x512.png" alt="Void" width="120" />
   <h1>Void</h1>
 </div>
 
@@ -33,7 +33,7 @@ A modern community and team collaboration platform. Void provides a structured a
 | **Frontend** | Next.js 16, React 19, TypeScript |
 | **Authentication** | Clerk |
 | **Database** | MySQL with Prisma ORM (MariaDB adapter) |
-| **Styling** | Tailwind CSS, Radix UI, Lucide Icons |
+| **Styling** | Tailwind CSS, Radix UI, Lucide Icons, Shadcn |
 | **Forms** | React Hook Form with Zod validation |
 | **File Upload** | UploadThing |
 | **State Management** | React hooks, Form state |
