@@ -1,7 +1,6 @@
 "use client"
 import { Plus } from 'lucide-react'
 import ActionTooltips from '../ActionTooltips'
-import { ModeToggle } from '../ui/themeButton'
 import { useModalStore } from '@/hooks/use-modal-store'
 const NavigationAction = () => {
     const {onOpen} = useModalStore()
