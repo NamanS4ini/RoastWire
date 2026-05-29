@@ -23,9 +23,8 @@ import {
     FormItem,
     FormLabel
 } from "../ui/form"
-import { toast } from "sonner"
-import { useRouter } from "next/navigation"
 import { useModalStore } from "@/hooks/use-modal-store"
+import { useEffect } from "react"
 
 
 const formSchema = z.object({
@@ -34,9 +33,10 @@ const formSchema = z.object({
 })
 
 export const EditServerModal = () => {
-    const {isOpen, onClose, type} = useModalStore()
-    const router = useRouter()
-    const isModalOpen = isOpen && type === "createServer"
+  console.log("Rendering EditServerModal")
+    const {isOpen, onClose, type, data} = useModalStore()
+  const isModalOpen = isOpen && type === "editServer"
+  const {server} = data
     const handleClose = () => {
         form.reset()
         onClose()
@@ -49,19 +49,17 @@ export const EditServerModal = () => {
             imageURL: ""
         }
     })
-    
+
+    useEffect(() => {
+        if (server) {
+            form.setValue("name", server.name)
+          form.setValue("imageURL", server.imageURL)
+        }
+    }, [server, form])
+  
     const isLoading = form.formState.isSubmitting
     const onSubmit = async (data: z.infer<typeof formSchema>) => {
-        try {
-            await axios.post("/api/servers", data)
-            toast.success("Server created successfully!")
-            form.reset()
-            router.refresh()
-            onClose()
-
-        } catch (error) {
-            toast.error("Something went wrong. Please try again.")
-        }
+        
     }
 
     return (
@@ -69,9 +67,9 @@ export const EditServerModal = () => {
             <Dialog open={isModalOpen} onOpenChange={handleClose}>
                 <DialogContent className="sm:max-w-106.25">
                     <DialogHeader>
-                        <DialogTitle>Initial Setup</DialogTitle>
+                        <DialogTitle>Edit Server</DialogTitle>
                         <DialogDescription>
-                            Let's get started by creating your first server.
+                            Edit your server
                         </DialogDescription>
                     </DialogHeader>
                     <Form {...form}>
