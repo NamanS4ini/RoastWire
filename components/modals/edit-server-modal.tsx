@@ -33,10 +33,10 @@ const formSchema = z.object({
     imageURL: z.url("Please enter a valid URL").optional()
 })
 
-export const CreateServerModal = () => {
+export const EditServerModal = () => {
     const {isOpen, onClose, type} = useModalStore()
     const router = useRouter()
-    const isModalOpen = isOpen && type === "editServer"
+    const isModalOpen = isOpen && type === "createServer"
     const handleClose = () => {
         form.reset()
         onClose()
