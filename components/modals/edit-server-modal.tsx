@@ -31,14 +31,9 @@ const formSchema = z.object({
 });
 
 export const EditServerModal = () => {
-  console.log("Rendering EditServerModal");
   const { isOpen, onClose, type, data } = useModalStore();
   const isModalOpen = isOpen && type === "editServer";
   const { server } = data;
-  const handleClose = () => {
-    form.reset();
-    onClose();
-  };
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -48,19 +43,31 @@ export const EditServerModal = () => {
     },
   });
 
+  const handleClose = () => {
+    form.reset();
+    onClose();
+  };
+
   useEffect(() => {
-    if (server) {
-      form.setValue("name", server.name);
-      form.setValue("imageURL", server.imageURL);
+    if (isModalOpen && server) {
+      form.reset({
+        name: server.name,
+        imageURL: server.imageURL ?? "",
+      });
     }
-  }, [server, form]);
+  }, [isModalOpen, server, form]);
 
   const isLoading = form.formState.isSubmitting;
   const onSubmit = async (data: z.infer<typeof formSchema>) => {};
 
   return (
     <div>
-      <Dialog open={isModalOpen} onOpenChange={handleClose}>
+      <Dialog
+        open={isModalOpen}
+        onOpenChange={(open) => {
+          if (!open) handleClose();
+        }}
+      >
         <DialogContent className="sm:max-w-106.25">
           <DialogHeader>
             <DialogTitle>Edit Server</DialogTitle>
