@@ -32,7 +32,7 @@ A modern community and team collaboration platform. Void provides a structured a
 |----------|---------------|
 | **Frontend** | Next.js 16, React 19, TypeScript |
 | **Authentication** | Clerk |
-| **Database** | MySQL with Prisma ORM (MariaDB adapter) |
+| **Database** | MySQL with Prisma ORM |
 | **Styling** | Tailwind CSS, Radix UI, Lucide Icons, Shadcn |
 | **Forms** | React Hook Form with Zod validation |
 | **File Upload** | UploadThing |
@@ -171,10 +171,6 @@ components.json          # Shadcn UI configuration
 - Advanced admin controls and moderation
 - User presence indicators
 - Media sharing and attachments
-
-## 📝 Contributing
-
-Contributions are welcome. Please open an issue or submit a pull request for any improvements.
 
 ## 📄 License
 
