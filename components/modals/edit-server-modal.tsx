@@ -24,7 +24,6 @@ import {
 } from "../ui/form";
 import { useModalStore } from "@/hooks/use-modal-store";
 import { useEffect } from "react";
-import { log } from "console";
 
 const formSchema = z.object({
   name: z.string().min(3, "Server name must be at least 3 characters long"),
@@ -34,7 +33,7 @@ const formSchema = z.object({
 export const EditServerModal = () => {
   const { isOpen, onClose, type, data } = useModalStore();
   const isModalOpen = isOpen && type === "editServer";
-  const { server } = data; 
+  const { server } = data;
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -55,7 +54,7 @@ export const EditServerModal = () => {
         name: server.name,
         imageURL: server.imageURL ?? "",
       });
-    }
+    } 
   }, [isModalOpen, server, form]);
 
   const isLoading = form.formState.isSubmitting;

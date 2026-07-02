@@ -8,6 +8,7 @@ export type ModalType =
   | "editChannel"
   | "invite"
   | "initialSetup"
+  | "memebers"
   | null;
 
 interface ModalData {
