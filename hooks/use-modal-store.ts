@@ -1,4 +1,4 @@
-import { Server } from "@/lib/generated/prisma/client";
+import { ServerWithMembersWithProfile } from "@/types";
 import { create } from "zustand";
 
 export type ModalType =
@@ -12,7 +12,7 @@ export type ModalType =
   | null;
 
 interface ModalData {
-  server?: Server;
+  server?: ServerWithMembersWithProfile;
 }
 interface ModalState {
   type: ModalType | null;
